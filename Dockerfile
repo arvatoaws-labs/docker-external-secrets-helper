@@ -1,14 +1,8 @@
-FROM alpine:3
-
-ARG KUBE_VERSION="1.27.1"
-ARG TARGETOS="linux"
+FROM ghcr.io/arvatoaws-labs/alpine
 
 ADD det-arch.sh /usr/local/bin
 
-RUN apk -U upgrade \
-    && apk add --no-cache ca-certificates bash \
-    && wget -q https://storage.googleapis.com/kubernetes-release/release/v${KUBE_VERSION}/bin/${TARGETOS}/`det-arch.sh a r`/kubectl -O /usr/local/bin/kubectl \
-    && chmod +x /usr/local/bin/kubectl
+RUN apk -U upgrade && apk add --no-cache ca-certificates bash && apk add --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing kubectl
 
 ADD wait.sh /usr/local/bin/
 
