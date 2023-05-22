@@ -14,7 +14,7 @@ if [ "$WAIT_TIMEOUT" = "" ]; then
   WAIT_TIMEOUT=60
 fi
 if [ "$WAIT_INTERVAL" = "" ]; then
-  WAIT_INTERVAL=60
+  WAIT_INTERVAL=5
 fi
 
 echo "Checking kubernetes version..."
